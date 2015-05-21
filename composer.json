@@ -1,0 +1,27 @@
+{
+  "name": "fduh/poker-bundle",
+  "type": "symfony-bundle",
+  "description": "Results manager for poker or card games events",
+  "keywords": ["cards", "poker"],
+  "homepage": "https://github.com/fabienduhamel/PokerBundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fabien Duhamel",
+      "email": "fabien.duhamel@gmail.com"
+    }
+  ],
+  "require": {
+    "php"                           : ">=5.3.0",
+    "symfony/symfony"               : "~2.3",
+    "doctrine/orm"                  : "~2.3",
+    "doctrine/doctrine-bundle"      : "~1.2",
+    "sensio/distribution-bundle"    : "~2.3|~3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit"               : "~4.4"
+  },
+  "autoload": {
+    "psr-4": { "Fduh\\PokerBundle\\": "" }
+  }
+}

@@ -1,0 +1,14 @@
+services:
+    poker.repository.hydrated.season:
+        class: Fduh\PokerBundle\Entity\SeasonRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - FduhPokerBundle:Season
+
+    poker.repository.hydrated.event:
+        class: Fduh\PokerBundle\Entity\EventRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - FduhPokerBundle:Event

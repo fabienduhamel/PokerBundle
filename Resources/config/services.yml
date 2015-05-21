@@ -1,0 +1,31 @@
+services:
+    poker.results_handler:
+        class: Fduh\PokerBundle\Handler\ResultHandler
+        arguments:
+            - @poker.manager.event
+            - @poker.manager.player
+
+    poker.player_data_sorter:
+        class: Fduh\PokerBundle\Sorter\PlayerDataSorter
+
+    poker.builder.event_data:
+        class: Fduh\PokerBundle\Builder\EventDataBuilder
+        arguments:
+            - @poker.score_calculator
+
+    poker.builder.player_data:
+        class: Fduh\PokerBundle\Builder\PlayerDataBuilder
+
+    poker.builder.last_hand:
+        class: Fduh\PokerBundle\Builder\LastHandBuilder
+
+    poker.manager.player:
+        class: Fduh\PokerBundle\Handler\Data\PlayerManager
+        arguments:
+            - @poker.builder.player_data
+            - @poker.player_data_sorter
+
+    poker.manager.event:
+        class: Fduh\PokerBundle\Handler\Data\EventManager
+        arguments:
+            - @poker.builder.event_data

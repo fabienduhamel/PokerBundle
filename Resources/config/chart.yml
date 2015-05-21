@@ -1,0 +1,5 @@
+services:
+    poker.chart_maker:
+        class: Fduh\PokerBundle\Chart\ChartMaker
+        arguments:
+            - @poker.results_handler

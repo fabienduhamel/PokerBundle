@@ -1,0 +1,16 @@
+services:
+    poker.score_calculator:
+        class: Fduh\PokerBundle\Calculator\ScoreCalculator
+        arguments:
+            - @poker.calculation.method
+
+    poker.calculation.method:
+        class: %f_duh_poker.calculation_class%
+
+    poker.updater.score:
+        class: Fduh\PokerBundle\Listener\ScoreUpdater
+        arguments:
+            - @poker.score_calculator
+        tags:
+            - { name: doctrine.event_listener, event: onFlush }
+            - { name: doctrine.event_listener, event: prePersist }

@@ -8,12 +8,11 @@ Add the dependency:
 $ composer require fduh/poker-bundle dev-master
 ```
 
-Add the bundle in AppKernel.php:
+Add the bundle:
 
 ```php
 // app/AppKernel.php
 
-// ...
 class AppKernel extends Kernel
 {
     public function registerBundles()
@@ -21,7 +20,8 @@ class AppKernel extends Kernel
         $bundles = array(
             // ...
             new Fduh\PokerBundle\FduhPokerBundle(),
-            new SaadTazi\GChartBundle\SaadTaziGChartBundle(), // Optional, for Google Chart.
+            // Optional, for Google Chart
+            new SaadTazi\GChartBundle\SaadTaziGChartBundle(),
         );
     }
 }
@@ -45,15 +45,16 @@ $resultsHandler->addSeason($yourSeason);
 Of course, you can retrieve events by using:
 
 ```php
-// Reduces requests count.
+// Reduces requests count
 $events = $this->get('poker.repository.hydrated.event')->findAllViewableEventsByDateAsc();
 ```
 
-Now there's how you should use the results handler:
+Now there's how you should use the results handler in your template:
 
 ```twig
 {% for eventData in resultsHandler.eventManager.eventsData %}
     {{ eventData.event }} // Access to the Event entity
+    {# And other functions... #}
 {% endfor %}
 
 {% for playerData in resultsHandler.playerManager.playersData %}
@@ -65,9 +66,9 @@ Now there's how you should use the results handler:
 {% endfor %}
 ```
 
-Open *PlayerDataInterface.php* and *EventDataInterface.php* to read more about properties.
+Open *PlayerDataInterface.php* and *EventDataInterface.php* to read more about provided properties.
 
-Watch a practical example at [StAndrews Poker Club](http://www.standrewspokerclub.fr/result).
+Watch a practical example at [standrewspokerclub.fr](http://www.standrewspokerclub.fr/result).
 
 ### Chart
 
@@ -92,27 +93,14 @@ And in the template (mine for the example):
 <script>
     $(function() {
         {{ gchart_line_chart(chart, 'chart', width, height, null,
-           {'backgroundColor': 'transparent',
-            'hAxis': {'title': 'Events',
-                      'titleTextStyle': {'color': '#FFFFFF'},
-                      'textStyle': {color: '#FFF'},
-                      'slantedText': true,
-                      'slantedTextAngle': 45,
-                     },
-            'vAxis': {'title': 'Points',
-                      'titleTextStyle': {'color': '#FFFFFF'},
-                      'textStyle': {color: '#FFF'},
-                      'baselineColor': '#FFF',
-                     },
-            'legend': {'position': 'right', 'textStyle': {color: '#FFF'}}
-           }
+           { // your options }
           )
         }}
     });
 </script>
 ```
 
-Watch a practical example at [StAndrews Poker Club](http://www.standrewspokerclub.fr/stats).
+Watch a practical example at [standrewspokerclub.fr](http://www.standrewspokerclub.fr/stats).
 
 ## Configuration
 

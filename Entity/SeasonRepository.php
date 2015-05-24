@@ -17,13 +17,14 @@ class SeasonRepository extends EntityRepository
      */
     public function findLastSeason()
     {
-        $season = $this->getEntityManager()
+        $seasons = $this->getEntityManager()
             ->createQuery(
                 'SELECT s
                 FROM FduhPokerBundle:Season s
                 ORDER BY s.created_at DESC'
             )
-            ->getSingleResult();
+            ->getResult();
+        $season = $seasons[0];
 
         return $this->findSeasonBySlug($season->getSlug());
     }

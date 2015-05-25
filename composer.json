@@ -1,7 +1,7 @@
 {
   "name": "fduh/poker-bundle",
   "type": "symfony-bundle",
-  "description": "Results manager for poker or card games events.",
+  "description": "Results manager for poker and other card games.",
   "keywords": ["cards", "poker", "tournament"],
   "homepage": "https://github.com/fabienduhamel/PokerBundle",
   "license": "MIT",

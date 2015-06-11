@@ -41,8 +41,8 @@ class PlayerManager implements PlayerManagerInterface
         if (!$playerData) {
             $playerData = $this->addPlayer($player);
         }
-        $this->playersData = $this->playerDataSorter->sortByTotalDesc($this->playersData);
         $playerData->addEventData($eventData);
+        $this->playersData = $this->playerDataSorter->sortByTotalDesc($this->playersData);
     }
 
     /**

@@ -45,6 +45,11 @@ class Result extends EntityBase
      */
     private $player;
 
+    /**
+     * @ORM\Column(type="integer", options={"default": 0})
+     */
+    private $prize;
+
     public function __toString()
     {
         return $this->player . ': [' . $this->event . ', rank ' . $this->rank . ']';
@@ -153,5 +158,24 @@ class Result extends EntityBase
     public function getScore()
     {
         return $this->score;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrize()
+    {
+        return $this->prize;
+    }
+
+    /**
+     * @param mixed $prize
+     * @return Result
+     */
+    public function setPrize($prize)
+    {
+        $this->prize = $prize;
+
+        return $this;
     }
 }
